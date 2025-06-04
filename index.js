@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const forwarder = require('./routes/forwarder');
+app.use(cors({
+  origin: '*' // o '*' para permitir todos
+}));
 
 app.use(express.json());
+
 
 // Montamos el router en /forward
 app.use('/forward', forwarder);
